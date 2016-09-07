@@ -1,14 +1,15 @@
 import sys
 
+
 def get_stick_count():
     print("Welcome to the game of sticks! You will need 2 players to play this game. \n Your objective is to NOT be the player with only 1 stick left.\n Let's get started!")
     stick_count = input("How many sticks do you want to start with? Choose a number between 10-100: ")
     return stick_count
 
+
 def initial_stick_count(stick_count):
     try:
         if int(stick_count) <= 100 and int(stick_count) >= 10:
-            #return True
             return int(stick_count)
         elif int(stick_count) > 100 or int(stick_count) < 10:
             print("Please provide a number within the range of 10-100.")
@@ -20,6 +21,7 @@ def initial_stick_count(stick_count):
         else:
             print("Thanks for playing! Bye.")
             return False
+
 
 def is_game_over(board):
     if board <= 1:
@@ -34,6 +36,8 @@ def main():
     sticks_to_choose = "1, 2, 3"
     while True:
         player1_choice = input("Player 1: Choose a number from {}: ".format(sticks_to_choose))
+        if player1_choice not in sticks_to_choose:
+            print("Please enter {}.".format(sticks_to_choose
         board -= int(player1_choice)
         print("There are {} sticks left.".format(board))
         if is_game_over(board):
@@ -44,6 +48,8 @@ def main():
                 print("Player 2: You win!")
                 break
         player2_choice = input("Player 2: Choose a number from {}: ".format(sticks_to_choose))
+        if player1_choice not in sticks_to_choose:
+            print("Please enter {}.".format(sticks_to_choose))
         board -= int(player2_choice)
         print(("There are {} sticks left.".format(board)))
         if is_game_over(board):
